@@ -15,7 +15,7 @@ public class CartPageAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(true);
-		forward.setPath("cart.jsp");
+		forward.setPath("cartPage.jsp");
 		
 		return forward;
 	}

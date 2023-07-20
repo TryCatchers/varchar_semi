@@ -18,9 +18,10 @@ public class TeaListPageAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		
+		TeaVO tVO = new TeaVO();
 		TeaDAO tDAO = new TeaDAO();
 		
-		ArrayList<TeaVO> tdatas = tDAO.selectAll(null);
+		ArrayList<TeaVO> tdatas = tDAO.selectAll(tVO);
 		request.setAttribute("tdatas", tdatas);
 		
 		forward.setRedirect(false);

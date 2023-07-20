@@ -13,10 +13,12 @@ public class TeaDAO {
 
 	static final private String SQL_SELECTALL = "SELECT t.TEA_NUM, t.TEA_NAME, t.TEA_PRICE, t.TEA_CNT, t.TEA_CATEGORY, t.TEA_CONTENT, i.IMAGE_URL\r\n"
 			+ "FROM TEA t JOIN IMAGE i USING (TEA_NUM)\r\n"
-			+ "WHERE t.TEA_CATEGORY LIKE CONCAT('%', ?, '%') AND (t.TEA_NAME LIKE CONCAT('%', ?, '%') OR t.TEA_CONTENT LIKE CONCAT('%', ?, '%')) AND i.IMAGE_DIVISION = 1 "
-			+ "ORDER BY t.TEA_NUM "
-			+ "LIMIT ?+6 OFFSET ?;";
-	static final private String SQL_SELECTONE = "SELECT TEA_NUM, TEA_NAME, TEA_PRICE, TEA_CNT, TEA_CATEGORY, TEA_CONTENT FROM TEA WHERE TEA_NUM = ?;";
+			+ "WHERE i.IMAGE_DIVISION = 1;";
+	
+	
+	static final private String SQL_SELECTONE = "SELECT t.TEA_NUM, t.TEA_NAME, t.TEA_PRICE, t.TEA_CNT, t.TEA_CATEGORY, t.TEA_CONTENT, i.IMAGE_URL\r\n"
+			+ "FROM TEA t JOIN IMAGE i USING (TEA_NUM)\r\n"
+			+ "WHERE i.IMAGE_DIVISION = 1 AND t.TEA_NUM = ?;";
 	static final private String SQL_UPDATE = "UPDATE TEA SET TEA_CNT = ? WHERE TEA_NUM = ?";
 //	static final private String SQL_INSERT = "";
 //	static final private String SQL_DELETE = "";
@@ -28,11 +30,12 @@ public class TeaDAO {
 
 		try {
 			pstmt = conn.prepareStatement(SQL_SELECTALL);
-			pstmt.setString(1, tVO.getTeaCategory());
-			pstmt.setString(2, tVO.getTeaSearchWord());
-			pstmt.setString(3, tVO.getTeaSearchWord());
-			pstmt.setInt(4, tVO.getPagingCnt());
-			pstmt.setInt(5, tVO.getPagingCnt());
+			/*
+			 * pstmt.setString(1, tVO.getTeaCategory()); pstmt.setString(2,
+			 * tVO.getTeaSearchWord()); pstmt.setString(3, tVO.getTeaSearchWord());
+			 */
+			//pstmt.setInt(4, tVO.getPagingCnt());
+			//pstmt.setInt(5, tVO.getPagingCnt());
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -43,7 +46,7 @@ public class TeaDAO {
 				data.setTeaCnt(rs.getInt("TEA_CNT"));
 				data.setTeaCategory(rs.getString("TEA_CATEGORY"));
 				data.setTeaContent(rs.getString("TEA_CONTENT"));
-				data.setTeaContent(rs.getString("IMAGE_URL"));
+				data.setImageUrl(rs.getString("IMAGE_URL"));
 				datas.add(data);
 			}
 		} catch (SQLException e) {
@@ -59,8 +62,9 @@ public class TeaDAO {
 	public TeaVO selectOne(TeaVO tVO) {
 		conn = JDBCUtil.connect();
 
-		// TeaVO data=null;
 		TeaVO data = new TeaVO();
+		//TeaVO data=null;
+		System.out.println("TeaVO selectOne 로그 tVO: "+tVO.getTeaNum());
 
 		try {
 			pstmt = conn.prepareStatement(SQL_SELECTONE);
@@ -74,6 +78,7 @@ public class TeaDAO {
 				data.setTeaCnt(rs.getInt("TEA_CNT"));
 				data.setTeaCategory(rs.getString("TEA_CATEGORY"));
 				data.setTeaContent(rs.getString("TEA_CONTENT"));
+				data.setImageUrl(rs.getString("IMAGE_URL"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

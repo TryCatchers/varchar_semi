@@ -147,7 +147,7 @@ public class FrontController extends HttpServlet {
     		forward = new MapPageAction().execute(request, response);    		
     	}
     	else {
-    		
+    		response.sendRedirect("goback.jsp");
     	}
     	
     	// 3. 사용자에게 응답. View로 이동
@@ -160,9 +160,14 @@ public class FrontController extends HttpServlet {
     			dispatcher.forward(request, response);
     		}    		
     	}
-    	
-    	PrintWriter out = response.getWriter();
-    	out.println("<script>alert('요청처리에 실패했습니다!!!!!');history.go(-1);</script>");
+    	else {
+    		response.sendRedirect("goback.jsp");
+    	}
+
+		/*
+		 * PrintWriter out = response.getWriter();
+		 * out.println("<script>alert('요청처리에 실패했습니다!!!!!');history.go(-1);</script>");
+		 */
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

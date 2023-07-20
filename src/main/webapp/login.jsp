@@ -162,10 +162,10 @@
                     <div class="breadcrumb__text">
                         <h2>Please Login! :D</h2>
                         <br>
-                        <form action="login" method="post">
-                        <div class="id">ID &nbsp;<input type="text" name="mid" placeholder="아이디를 입력하세요" required> </div>
+                        <form action="login.do" method="post">
+                        <div class="id">ID &nbsp;<input type="text" name="memberId" placeholder="아이디를 입력하세요" required> </div>
                         <br>
-                        <div class="pw">PW &nbsp;<input type="password" name="mpw" placeholder="비밀번호를 입력하세요" required> </div> 
+                        <div class="pw">PW &nbsp;<input type="password" name="memberPw" placeholder="비밀번호를 입력하세요" required> </div> 
                         <br>
                         <input type="submit" value="Log In">  
                         </form>

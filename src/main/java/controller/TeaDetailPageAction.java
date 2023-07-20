@@ -20,8 +20,12 @@ public class TeaDetailPageAction implements Action {
 		TeaDAO tDAO = new TeaDAO();
 		TeaVO tVO = new TeaVO();
 		
+		System.out.println(request.getParameter("teaNum"));
+		
 		tVO.setTeaNum(Integer.parseInt(request.getParameter("teaNum")));
 		tVO = tDAO.selectOne(tVO);
+		System.out.println("로그 selctOne 결과:" + tVO);
+		System.out.println("로그 forward 결과:" + forward);
 		
 		if (tVO != null) {
 			// 리뷰 형태 결정 후
@@ -30,8 +34,7 @@ public class TeaDetailPageAction implements Action {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("teaDetail.jsp");
-		}		
-		
+		}
 		return forward;
 	}
 	

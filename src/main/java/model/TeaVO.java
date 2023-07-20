@@ -93,4 +93,20 @@ public class TeaVO {
 		this.teaSearchWord = teaSearchWord;
 	}
 
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.getImageUrl();
+	}
+	
+	
+
 }
