@@ -155,11 +155,11 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                        <c:if test="${empty memberId}">
-                         <strong><a href="login.do">로그인</a></strong>후 이용하세욤 ㅎㅎ
+                        <c:if test="${empty ssMemberId}">
+                         <strong><a href="loginPage.do">로그인</a></strong>후 이용하세욤 ㅎㅎ
                          </c:if>
-                         <c:if test="${not empty memberId}">
-                         <strong>${memberId}님 환영합니다!</strong>
+                         <c:if test="${not empty ssMemberId}">
+                         <strong>${ssMemberId}님 환영합니다!</strong>
                          </c:if>
                         </div>
                         <div class="hero__search__phone">

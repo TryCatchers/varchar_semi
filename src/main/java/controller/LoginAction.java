@@ -21,8 +21,8 @@ public class LoginAction implements Action {
 		MemberDAO mDAO = new MemberDAO();
 		MemberVO mVO = new MemberVO();
 		
-		mVO.setMemberId(request.getParameter("memberid"));
-		mVO.setMemberPw(request.getParameter("memberpw"));
+		mVO.setMemberId(request.getParameter("memberId"));
+		mVO.setMemberPw(request.getParameter("memberPw"));
 		mVO.setMemberSearch("로그인");
 		mVO = mDAO.selectOne(mVO);
 		
