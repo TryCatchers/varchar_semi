@@ -149,18 +149,18 @@ function test() { // 회원가입 버튼에서 실행될 함수 (버튼을 submi
     // MemberVO의 패스워드 멤버변수 memberPw와 동일한 name을 갖춰서 보내야할 인풋값
     var p2 = document.getElementById('pw2').value; 
     // 단순 2차 비번 확인용
-    if( p1 != p2 ) {
-      alert("비밀번호가 일치 하지 않아서 회원가입을 완료할수 없습니다.");
-    } else{
+    if( p1 != p2 ) { // 비번이 일치하지 않을 경우
+      alert("비밀번호가 일치하지 않아서 회원가입을 완료할 수 없습니다.");
+    } 
+    else if(p1.length<8){ // 비번 일치여부와는 관계없이 8글자 미만일경우
+      alert("비밀번호는 8글자 이상으로 설정해야 합니다.");
+    }
+    else{
       alert("비밀번호가 일치합니다, 회원가입을 완료합니다!");
       document.getElementById('signup').submit(); // 컨트롤러에게 form에 id값을 설정하여 전달
     }
 }
 
-function test02(){
-	
-	
-}
 </script>
 	<!-- Page Preloder -->
 	<div id="preloder">
@@ -176,7 +176,7 @@ function test02(){
 	<!-- Header Section End -->
 
 	<!-- Hero Section Begin -->
-
+     <!-- 공란 -->
 	<!-- Hero Section End -->
 
 	<!-- Breadcrumb Section Begin -->
@@ -188,7 +188,7 @@ function test02(){
 					<div class="breadcrumb__text">
 						<h2>Sign Up</h2>
 						<div class="breadcrumb__option">
-							<a href="./index.html">Home</a> <span>Checkout</span>
+							<a href="./main.jsp">Home</a> <span>Checkout</span>
 						</div>
 					</div>
 				</div>
@@ -228,7 +228,7 @@ function test02(){
 										<p>
 											비밀번호<span>*</span>
 										</p>
-										<input id="pw" type="password" name="memberPw" placeholder="비밀번호를 입력하세요 (최대 8자까지)" required>
+										<input id="pw" type="password" name="memberPw" placeholder="비밀번호를 입력하세요 (최소 8글자부터)" required>
 									</div>
 								</div>
 								<div class="col-lg-6">
@@ -262,7 +262,7 @@ function test02(){
 										<p>
 											연락처
 										</p>
-										<input type="text" name="memberPhone" placeholder="-(하이픈)을 빼고 입력하세요" required>
+										<input type="text" name="memberPhone" placeholder="-(하이픈)을 빼고 입력하세요">
 									</div>
 								</div>
 								<div class="col-lg-6">
@@ -270,7 +270,7 @@ function test02(){
 										<p>
 											Email
 										</p>
-										<input type="text" name="memberEmail" placeholder="@ 포함 정확하게 입력하세요" required>
+										<input type="text" name="memberEmail" placeholder="@ 포함 정확하게 입력하세요">
 									</div>
 								</div>
 							</div>
