@@ -1,4 +1,5 @@
-<meta charset="utf-8">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <a href="index.jsp"><img id="varimg" src="img/varcharLogo.jpg" alt="Colorlib logo"></a>
 <h1 style="text-align:center;">차의 대가, <strong>var茶</strong>에 오신것을 환영합니다.</h1>
 <p style="text-align:center;">홈페이지에 방문하시려면 상단의 이미지를 클릭하세요.</p>

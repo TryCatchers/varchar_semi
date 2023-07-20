@@ -4,7 +4,6 @@ public class ReviewVO {
 	private int reviewNum;
 	private String memberId;
 	private int buySerial;
-	private String reviewTitle;
 	private String reviewContent;
 	
 	// 임시변수
@@ -12,18 +11,15 @@ public class ReviewVO {
 	private int PagingCnt;
 	
 	public ReviewVO() {
-		this(0, "", 0, "", "");
+		this(0, "", 0, "");
 	}
 	
-	public ReviewVO(int reviewNum, String memberId, int buySerial, String reviewTitle, String reviewContent) {
+	public ReviewVO(int reviewNum, String memberId, int buySerial, String reviewContent) {
 		this.reviewNum = reviewNum;
 		this.memberId = memberId;
 		this.buySerial = buySerial;
-		this.reviewTitle = reviewTitle;
 		this.reviewContent = reviewContent;
 	}
-	
-	
 
 	public int getPagingCnt() {
 		return PagingCnt;
@@ -55,14 +51,6 @@ public class ReviewVO {
 
 	public void setBuySerial(int buySerial) {
 		this.buySerial = buySerial;
-	}
-
-	public String getReviewTitle() {
-		return reviewTitle;
-	}
-
-	public void setReviewTitle(String reviewTitle) {
-		this.reviewTitle = reviewTitle;
 	}
 
 	public String getReviewContent() {
