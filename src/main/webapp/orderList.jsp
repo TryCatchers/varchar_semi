@@ -7,6 +7,7 @@
 
 <!-- ● bdatas 객체배열
 		{ buyNum(주문번호),
+		  buySerial(주문시리얼번호),
 	   	  teaPice(상품가격) } 데이터 필요 -->
 <!-- ● buyNum(주문번호) 데이터 보냄 -->
 
@@ -16,7 +17,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>주문내역페이지</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -36,13 +37,15 @@
     		text-align: center
     	}
     	.shoping__cart__table table tbody td input{
-    		padding: 15px 30px 11px;
-    		font-size: 12px;
-    		letter-spacing: 4px;
-    		background: #6f6f6f;
+    		display: inline-block;
+    		font-size: 17px;
     		color: #ffffff;
-    		border: none;
-    		font-size: 1rem;
+    		text-transform: uppercase;
+    		letter-spacing: 1px;
+    		border: 1px solid #b2b2b2;
+    		padding: 14px 20px 12px;
+    		border-radius: 25px;
+    		background-color: #23512e;
     	}
     	.shoping__cart__table table tbody .orderInfo{
     		font-size: 16px;
@@ -68,56 +71,7 @@
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
-    <section class="hero hero-normal">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="hero__categories">
-                        <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>All departments</span>
-                        </div>
-                        <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
-                            </form>
-                        </div>
-                        <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <try:Hero/>
     <!-- Hero Section End -->
 
     <!-- Breadcrumb Section Begin -->
@@ -139,6 +93,13 @@
     <!-- Breadcrumb Section End -->
 
     <!-- Shoping Cart Section Begin -->
+    
+    <!-- 총 가격 구하기 -->
+    <c:set var="sum" value="0" />
+    <c:forEach var="v" items="bdatas">
+    	<c:set var="sum" value="${sum + (bdatas.teaPrice * bdatas.teaCnt)}" />
+    </c:forEach>
+    
     <section class="shoping-cart spad">
         <div class="container">
             <div class="row">
@@ -156,15 +117,15 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                <%-- <c:forEach var="v" items="${ bdatas }"> --%>
+                                <c:forEach var="v" items="${ bdatas }">
 									<tr>
-										<td class="orderInfo"><a href="orderDetail.do?num=${ v.buyNum }">주문번호${ v.buyNum }</a></td>
-										<td class="orderInfo">가격</td>
+										<td class="orderInfo"><a href="orderDetail.do?num=${ v.buyNum }">${ v.buyNum }</a></td>
+										<td class="orderInfo">${ sum }원</td>
 										<td>
 											<input type="submit" value="다시 담기">
 										</td>
 									</tr>
-								<%-- </c:forEach> --%>                                 
+								</c:forEach>                                
                             </tbody>
                         </table>
                         </form>
