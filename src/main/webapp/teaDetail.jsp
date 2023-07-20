@@ -75,9 +75,9 @@
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large"
-                                src="img/product/details/product-details-1.jpg" alt="">
+                                src="${tdata.imageUrl}" alt="이미지 변경">
                         </div>
-                        <div class="product__details__pic__slider owl-carousel">
+<!--                         <div class="product__details__pic__slider owl-carousel">
                             <img data-imgbigurl="img/product/details/product-details-2.jpg"
                                 src="img/product/details/thumb-1.jpg" alt="">
                             <img data-imgbigurl="img/product/details/product-details-3.jpg"
@@ -86,12 +86,12 @@
                                 src="img/product/details/thumb-3.jpg" alt="">
                             <img data-imgbigurl="img/product/details/product-details-4.jpg"
                                 src="img/product/details/thumb-4.jpg" alt="">
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
-                        <h3>${teaName}</h3>
+                        <h3>${tdata.teaName}</h3>
                         <div class="product__details__rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -100,7 +100,7 @@
                             <i class="fa fa-star-half-o"></i>
                             <span>${pagingcnt}</span>
                         </div>
-                        <div class="product__details__price">${teaPrice}</div>
+                        <div class="product__details__price">${tdata.teaPrice}</div>
                         <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam
                             vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet
                             quam vehicula elementum sed sit amet dui. Proin eget tortor risus.</p>
@@ -114,7 +114,7 @@
                         <a href="insertCart.do" class="primary-btn">장바구니 추가</a> <!-- 장바구니에 추가하기 -->
                         <a href="insertFavor.do" class="heart-icon"><span class="icon_heart_alt"></span></a> <!-- 찜 올리기 -->
                         <ul>
-                            <li><b>재고</b> <span>${teaCnt}</span></li>
+                            <li><b>재고</b> <span>${tdata.teaCnt}</span></li>
                             <li><b>배송예정일</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
                             <li><b>Weight</b> <span>0.5 kg</span></li>
                             <li><b>Share on</b>

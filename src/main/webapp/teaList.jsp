@@ -157,44 +157,46 @@
 									<div class="latest-prdouct__slider__item">
 										<!-- productList: TeaVO 객체들로 이루어진 상품 리스트 -->
 										<!-- imageList: ImageVO 객체들로 이루어진 이미지 리스트 (각 이미지는 특정 상품과 연결) -->
+									</div>
+								</div>
+								<!-- 여기에 포이치문 들어갈 자리 -->
+							</div>
+						</div>
 
-										<c:forEach var="product" items="${productList}">
-											<!-- 각 상품 정보 출력 -->
-											<a href="#" class="latest-product__item">
-												<div class="latest-product__item__pic">
-													<img src="img/latest-product/lp-1.jpg" alt="">
-												</div>
-												<div class="latest-product__item__text">
-													<h6>${product.teaName}</h6>
-													<span>${product.teaPrice}</span>
-												</div>
-											</a>
-
-											<!-- 해당 상품과 연결된 이미지 찾기 -->
-											<c:forEach var="image" items="${imageList}">
-												<c:if test="${image.teaNum eq product.teaNum}">
-													<!-- 해당 상품과 연결된 이미지 출력 -->
-													<a href="#" class="latest-product__item">
-														<div class="latest-product__item__pic">
-															<img id="${image.imageNum}" src="${image.imageUrl}"
-																alt="">
-														</div>
-														<div class="latest-product__item__text">
-															<h6>${product.teaName}</h6>
-															<span>${product.teaPrice}</span>
-														</div>
-													</a>
-												</c:if>
-											</c:forEach>
-										</c:forEach>
+					</div>
+				</div>
+				<!-- 범인 색출 -->
+				<div class="product__discount">
+					<div class="section-title product__discount__title">
+						<h2>상품 목록</h2>
+					</div>
+					<div class="row">
+						<div class="product__discount__slider owl-carousel">
+							<c:forEach var="tdatas" items="${tdatas}">
+								<div class="col-lg-4">
+									<div class="product__discount__item">
+										<div class="product__discount__item__pic set-bg"
+											data-setbg="${tdatas.imageUrl}">
+											<ul class="product__item__pic__hover">
+												<li><a href="insertFavor.do?teaNum=${tdatas.teaNum}"><i class="fa fa-heart"></i></a></li>
+												<li><a href="insertCart.do?teaNum=${tdatas.teaNum}&teaCnt=1"><i
+														class="fa fa-shopping-cart"></i></a></li>
+											</ul>
+										</div>
+										<div class="product__discount__item__text">
+											<h5>
+												<a href="teaDetailPage.do?teaNum=${tdatas.teaNum}">${tdatas.teaName}</a>
+											</h5>
+											<div class="product__item__price">${tdatas.teaPrice}</div>
 										</div>
 									</div>
 								</div>
-							</div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
-             </div>
+			</div>
+		</div>
 	</section>
 	<!-- Product Section End -->
 
