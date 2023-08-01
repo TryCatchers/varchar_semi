@@ -19,7 +19,6 @@ display: flex;
     align-items: center;
 animation: fadein 5s ease 3s;
   -webkit-animation: fadein 3s; /* Safari and Chrome */
-<!-- 수정 -->
 }
 
 @keyframes fadein {
